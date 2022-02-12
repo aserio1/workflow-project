@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Get output from workflow 1 using gihub cli
         run: gh run view --job Job1 --log > output.txt
         env:
