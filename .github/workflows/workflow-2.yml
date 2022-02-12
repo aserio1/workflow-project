@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get output from workflow 1 using gihub cli
-        run: gh run view --job Job1 --log > output.txt
+        run: |
+          RUN_ID=$(gh workflow view workflow-1.yml | grep -m1 "completed" | awk '{print $8}')
+          gh run view ${RUN_ID} --log > output.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
