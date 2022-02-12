@@ -29,5 +29,5 @@ jobs:
           DEPLOY_ID=$(grep -E '^[[:digit:]]{9}' sanitized_log.txt )  
           echo "Deployment id from workflow-1 is ${DEPLOY_ID}"
 
-          STATUS=$(grep '^(pending|queued)' sanitized_log.txt)
+          STATUS=$(grep -E '^(pending|queued)' sanitized_log.txt)
           echo "Status from workflow-1 is ${STATUS}"
