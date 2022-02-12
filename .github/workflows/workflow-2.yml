@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Get output from workflow 1 using gihub cli
         run: |
-          gh auth login                                     # login to github
-          gh run view --job Job1 --log > output.txt         # get the output of workflow 1 and save in the file output.txt
+          gh auth login
+          gh run view --job Job1 --log > output.txt
 
       - name: Read output from workflow 1
         run: |
