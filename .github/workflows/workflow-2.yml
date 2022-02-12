@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Get output from workflow 1 using gihub cli
         run: |
-          gh run view --job Job1 --log --output-path output.txt
+          gh run view --job Job1 --log > output.txt
 
       - name: Read output from workflow 1
         run: |
