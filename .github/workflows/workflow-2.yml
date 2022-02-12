@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Get output from workflow 1 using gihub cli
         run: |
-          gh auth login --with-token
+          gh auth login
           gh run view --job Job1 --log > output.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
