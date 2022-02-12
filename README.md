@@ -67,10 +67,15 @@ jobs:
         run: |
 
           # Use github CLI (gh) to get the ID of last completed execution of workflow-1 
+
           RUN_ID=$(gh workflow view workflow-1.yml | grep -m1 "completed" | awk '{print $8}')
+
           # With the run id from the last execution of workflow-1, get the output from the workflow-1 and save it to a file output.txt      
+
           gh run view ${RUN_ID} --log > output.txt
+
           #sanitize the output file and save the contents in a new file sanitized_log.txt
+
           sed 's/^.*Z //g' output.txt > sanitized_log.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
