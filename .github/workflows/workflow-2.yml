@@ -1,0 +1,19 @@
+name: workflow-2
+on:
+  workflow_dispatch:
+    branches:
+      - main
+
+jobs:
+  Job2:
+    name: Reading output from workflow 1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get output from workflow 1 using gihub cli
+        run: |
+          gh run view --job Job1 --log --output-path output.txt
+
+      - name: Read output from workflow 1
+        run: |
+          cat output.txt

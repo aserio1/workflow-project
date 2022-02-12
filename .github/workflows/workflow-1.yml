@@ -1,0 +1,20 @@
+name: workflow-1
+on:
+  workflow_dispatch:
+    branches:
+      - main
+
+jobs:
+  Job1:
+    name: Generating strings on the output
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate output strings
+        run: |
+          echo "commithash id is ${GITHUB_SHA}"
+          echo "499411494"
+          echo "pending"
