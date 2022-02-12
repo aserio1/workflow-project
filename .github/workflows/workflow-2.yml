@@ -14,6 +14,8 @@ jobs:
         run: |
           gh auth login --with-token
           gh run view --job Job1 --log > output.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Read output from workflow 1
         run: |
