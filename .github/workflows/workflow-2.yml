@@ -23,4 +23,11 @@ jobs:
 
       - name: Read output from workflow 1
         run: |
-          cat sanitized_log.txt
+          COMMIT_HASH=$(grep '^commithash id is ' sanitized_log.txt | sed 's/commithash id is //g')
+          echo "Commit hash from workflow-1 is ${COMMIT_HASH}"
+
+          DEPLOY_ID=$(grep -E '^[[:digit:]]{9}' sanitized_log.txt )  
+          echo "Deployment id from workflow-1 is ${DEPLOY_ID}"
+
+          STATUS=$(grep '^(pending|queued)' sanitized_log.txt)
+          echo "Status from workflow-1 is ${STATUS}"
