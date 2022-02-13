@@ -19,7 +19,7 @@ jobs:
           gh run view ${RUN_ID} --log > output.txt
           sed 's/^.*Z //g' output.txt > sanitized_log.txt
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Read output from workflow 1
         run: |
