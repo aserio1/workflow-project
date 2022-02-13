@@ -15,7 +15,7 @@ jobs:
 
       - name: Get output from workflow 1 using gihub cli
         run: |
-          gh auth logout
+          gh auth logout -h localhost 
           echo "${GITHUB_TOKEN}" > mytoken.txt
           gh auth login --with-token < mytoken.txt
           RUN_ID=$(gh workflow view workflow-1.yml | grep -m1 "completed" | awk '{print $8}')
