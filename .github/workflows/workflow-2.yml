@@ -15,7 +15,7 @@ jobs:
 
       - name: Get output from workflow 1 using gihub cli
         run: |
-          RUN_ID=$(gh workflow view workflow-1.yml | grep -m1 "completed" | awk '{print $8}')
+          RUN_ID=$(gh run list --workflow workflow-1.yml | grep -m1 "workflow-1" | awk '{print $8}')
           gh run view ${RUN_ID} --log > output.txt
           sed 's/^.*Z //g' output.txt > sanitized_log.txt
         env:
